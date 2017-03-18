@@ -226,23 +226,25 @@ TOP_DIR="${PWD}"
 # Make sure we're starting with a clean (i.e. empty) build directory to hold
 # the gzipped tarfile that will contain all of dependencies
 e_header "Starting Build"
+echo ""
 e_bold "Create Environment"
 rm -rf tmp-build-dir && \
 mkdir -p tmp-build-dir/build_dir/boot && \
-mkdir -p tmp-build-dir/build_dir/cde && \
+mkdir -p tmp-build-dir/build_dir/cde/optional && \
 cp configs/initrd/myimg.gz tmp-build-dir/build_dir/boot && \
 cp -r configs/isolinux tmp-build-dir/build_dir/boot && \
 chmod -R u+w tmp-build-dir/build_dir/boot/isolinux
 
 if [ $? -eq 0 ]; then
-	e_success "Environment Build"
+	e_success "Environment Created"
 else
-	e_error "failed to build environment in tmp-build-dir"
+	e_error "failed to create environment in tmp-build-dir"
 	exit 1
 fi
 
 ## TESTING START HERE!!!!!
 
+echo ""
 e_bold "Fetch Upstream Packages"
 wget $WGET_V -P tmp-build-dir/build_dir/boot $TCL_ISO_URL/vmlinuz64 && \
 wget $WGET_V -P tmp-build-dir/build_dir/boot $TCL_ISO_URL/corepure64.gz
@@ -254,7 +256,51 @@ else
 	exit 1
 fi
 
-e_bold "Buildinf Iso"
+echo ""
+e_bold "Populating CDE from configs/tc/extensions.lst"
+for file in `cat configs/tc/extensions.lst`
+do
+	if echo $file | egrep -q "^#"; then continue; fi
+	echo ""
+	e_note "$file"
+	wget $WGET_V -P tmp-build-dir/build_dir/cde/optional $TCL_MIRROR_URI/$file && \
+	wget $WGET_V -P tmp-build-dir/build_dir/cde/optional $TCL_MIRROR_URI/$file.md5.txt && \
+	echo $file >> tmp-build-dir/build_dir/cde/onboot.lst
+
+	wget $WGET_V -P tmp-build-dir/build_dir/cde/optional $TCL_MIRROR_URI/$file.dep
+done
+
+echo ""
+e_bold "Checking dependencies"
+pushd tmp-build-dir/build_dir/cde/optional
+	ls -1 *.dep | while read depfile
+	do
+		cat $depfile | while read dep
+		do
+			if [ ! -f $dep ]; then
+				e_warning "$dep missing - consider adding it to extensions.lst"
+			fi
+		done
+	done
+popd
+sleep 2
+
+if [ -d extras_bin ];then
+echo ""
+e_bold "Copying Extras BIN"
+	for file in `cat configs/tc/extras.lst`
+	do
+		if [ -f extras_bin/$file ]; then
+		e_note "$file"
+		cp extras_bin/$file tmp-build-dir/build_dir/cde/optional
+		echo $file >> tmp-build-dir/build_dir/cde/onboot.lst
+		fi
+	done
+fi
+
+
+echo ""
+e_bold "Building Iso"
 # since this is multi-line, easier to build it here
 preparer="primeroznl <primeroznl@gmail.com>
 https://github.com/primeroz/przVault
