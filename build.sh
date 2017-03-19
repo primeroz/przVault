@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 #
 
+if (netstat -nl| grep 8123) ; then
+	export http_proxy="http://localhost:8123"
+	export https_proxy="http://localhost:8123"
+fi
 
 #
 #Set Colors https://natelandau.com/bash-scripting-utilities/
