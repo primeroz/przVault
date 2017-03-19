@@ -2,5 +2,7 @@ bx.tcz
 cryptsetup.tcz
 dmenu.tcz
 firefox-ESR.tcz
+libgfshare.tcz
+scrypt.tcz
 st.tcz
 surf.tcz

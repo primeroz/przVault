@@ -20,6 +20,7 @@ glib2.tcz
 glib-networking.tcz
 gmp.tcz
 gnutls.tcz
+gnupg.tcz
 graphics-4.2.9-tinycore64.tcz
 gsettings-desktop-schemas.tcz
 gst-plugins-base-0.10.tcz
@@ -35,6 +36,7 @@ icu.tcz
 imlib2-bin.tcz
 imlib2.tcz
 libasound.tcz
+libassuan.tcz
 libcroco.tcz
 libdmx.tcz
 libdrm.tcz
@@ -51,6 +53,7 @@ libgpg-error.tcz
 libICE.tcz
 libjpeg-turbo.tcz
 liblvm2.tcz
+libksba.tcz
 libogg.tcz
 libpciaccess.tcz
 libpng.tcz
@@ -104,13 +107,14 @@ pango.tcz
 pcre.tcz
 pixman.tcz
 popt.tcz
+pth.tcz
 readline.tcz
 shared-mime-info.tcz
 sqlite3.tcz
 startup-notification.tcz
 udev-lib.tcz
 vim.tcz
-#wbar.tcz
+wbar.tcz
 webkit.tcz
 #Xfbdev.tcz
 xcursor-themes.tcz
@@ -120,6 +124,7 @@ xf86-video-intel.tcz
 xf86-video-qxl.tcz
 xkeyboard-config.tcz
 Xlibs.tcz
+Xorg-7.7.tcz
 Xorg-7.7-bin.tcz
 Xorg-7.7-lib.tcz
 Xorg-fonts.tcz
