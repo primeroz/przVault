@@ -235,7 +235,6 @@ e_bold "Create Environment"
 rm -rf tmp-build-dir && \
 mkdir -p tmp-build-dir/build_dir/boot && \
 mkdir -p tmp-build-dir/build_dir/cde/optional && \
-cp configs/initrd/myimg.gz tmp-build-dir/build_dir/boot && \
 cp -r configs/isolinux tmp-build-dir/build_dir/boot && \
 chmod -R u+w tmp-build-dir/build_dir/boot/isolinux
 
@@ -245,6 +244,15 @@ else
 	e_error "failed to create environment in tmp-build-dir"
 	exit 1
 fi
+
+echo ""
+e_bold "Build Custom initramfs image"
+mkdir tmp-build-dir/myimg.gz/
+cp -a configs/initrd/* tmp-build-dir/myimg.gz/
+pushd tmp-build-dir/myimg.gz/
+	find | sudo cpio -o -H newc | gzip -2 >  ../build_dir/boot/myimg.gz && \
+	advdef -z4 ../build_dir/boot/myimg.gz
+popd
 
 ## TESTING START HERE!!!!!
 
@@ -321,7 +329,8 @@ pushd tmp-build-dir
     -p "${preparer:0:128}"                                      \
     -V "przVault 0.1"                        										\
     -copyright 'LICENSE'                                        \
-    -o "remastered.iso" build_dir
+    -o "remastered.iso" build_dir  && \
+	isohybrid remastered.iso
 
 	if [ $? -eq 0 ]; then
 		e_success "ISO Successfuly built"
