@@ -2,7 +2,11 @@ bx.tcz
 cryptsetup.tcz
 dmenu.tcz
 firefox-ESR.tcz
+gopass.tcz
 libgfshare.tcz
+pinentry.tcz
 scrypt.tcz
 st.tcz
 surf.tcz
+tomb.tcz
+zsh.tcz
