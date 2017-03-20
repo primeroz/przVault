@@ -19,6 +19,7 @@ gamin.tcz
 gcc_libs.tcz
 gdk-pixbuf2.tcz
 geoclue.tcz
+gettext.tcz
 glib2.tcz
 glib-networking.tcz
 gmp.tcz
@@ -42,6 +43,7 @@ imlib2-bin.tcz
 imlib2.tcz
 json-glib.tcz
 js-17.tcz
+kmaps.tcz
 libavahi.tcz
 libasound.tcz
 libassuan.tcz
@@ -130,6 +132,7 @@ shared-mime-info.tcz
 sqlite3.tcz
 startup-notification.tcz
 udev-lib.tcz
+util-linux.tcz
 vim.tcz
 wbar.tcz
 #webkit.tcz
