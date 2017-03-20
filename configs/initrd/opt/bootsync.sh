@@ -8,5 +8,3 @@
 # ln lib to lib64 for binary support
 /bin/ln -s /lib /lib64
 
-# XXX Umount HARDCODED for now sda
-umount /dev/sda
