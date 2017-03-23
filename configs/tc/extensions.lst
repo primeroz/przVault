@@ -11,7 +11,7 @@ dbus.tcz
 dbus-glib.tcz
 enchant.tcz
 expat2.tcz
-filesystem-4.2.9-tinycore64.tcz
+filesystems-4.2.9-tinycore64.tcz
 file.tcz
 fltk-1.3.tcz
 fontconfig.tcz
@@ -113,7 +113,6 @@ libXvmc.tcz
 libXxf86dga.tcz
 libXxf86vm.tcz
 linux-pam.tcz
-lxpanel.tcz
 lxrandr.tcz
 lvm2.tcz
 modemmanager.tcz

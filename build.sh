@@ -279,6 +279,11 @@ do
 	wget $WGET_V -P tmp-build-dir/build_dir/cde/optional $TCL_MIRROR_URI/$file.md5.txt && \
 	echo $file >> tmp-build-dir/build_dir/cde/onboot.lst
 
+	if [ $? -ne 0 ]; then
+		e_error "Failed to download $file"
+		exit 1	
+	fi
+
 	wget $WGET_V -P tmp-build-dir/build_dir/cde/optional $TCL_MIRROR_URI/$file.dep
 done
 
