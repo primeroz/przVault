@@ -11,6 +11,7 @@ dbus.tcz
 dbus-glib.tcz
 enchant.tcz
 expat2.tcz
+filesystem-4.2.9-tinycore64.tcz
 fltk-1.3.tcz
 fontconfig.tcz
 freetype.tcz
@@ -127,6 +128,7 @@ pixman.tcz
 polkit.tcz
 popt.tcz
 pth.tcz
+raid-dm-4.2.9-tinycore64.tcz
 readline.tcz
 shared-mime-info.tcz
 sqlite3.tcz
