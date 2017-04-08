@@ -64,6 +64,7 @@ libGLESv2.tcz
 libGL.tcz
 libgcrypt.tcz
 libgpg-error.tcz
+libglade.tcz
 libICE.tcz
 libjpeg-turbo.tcz
 liblvm2.tcz
@@ -120,7 +121,7 @@ mtdev.tcz
 nettle.tcz
 nspr.tcz
 ncurses.tcz
-obmenu.tcz
+obconf.tcz
 openbox.tcz
 openbox-config.tcz
 openssl.tcz
